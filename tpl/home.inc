@@ -18,15 +18,20 @@ alt ="Category Image" />
 <span class="subtitle"><!-- #SubTitle --><!-- SubTitle# --></span>
 </p>
 
-
+<br />
 <!-- #Possibilities -->
-<nobr>
+<nobr style="clear:both">
 <input type="radio" name="pos" class="betoption"
 value="<!-- #BetID --><!-- BetID# --><!-- #PossibilityID --><!-- PossibilityID# -->" />
-<!-- #PossibilityName --><!-- PossibilityName# -->
-<!-- #PossibilityQuote --><!-- PossibilityQuote# -->
+<b><!-- #PossibilityName --><!-- PossibilityName# --></b>
+<i>
+	(	<sup>+</sup><!-- #PossibilityQue --><!-- PossibilityQue# --> | 
+		<sup>k</sup><!-- #PossibilityQuote --><!-- PossibilityQuote# --> | 
+		<sup>$</sup><!-- #PossibilitySum --><!-- PossibilitySum# --> 
+	)
+</i>
 </nobr>
-&nbsp;
+&nbsp;<br />
 <!-- Possibilities# -->
 
 

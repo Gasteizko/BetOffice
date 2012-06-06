@@ -139,12 +139,16 @@ for ($i = $start_num; $i <= $disp_num-1; $i++ ){
 		$possibilities_names = $active_bets[$i]->getPossibilitiesNames();
 		$possibilities_ids = $active_bets[$i]->getPossibilitiesIds();
 		$possibilities_quotes = $active_bets[$i]->getPossibilitiesQuotes();
+		$possibilities_ques = $active_bets[$i]->getPossibilitiesQues();
+		$possibilities_sums = $active_bets[$i]->getPossibilitiesSums();
 		foreach($possibilities_names as $possibility_name){
 			$current_possiblility_quote = " - ".$possibilities_quotes[$k];
 			$possibilities_html_part .= getTemplatePart("Possibilities", $mainhtml);
 			$possibilities_html_part = replace("PossibilityID", $possibilities_ids[$k], $possibilities_html_part);
 			$possibilities_html_part = replace("PossibilityName", $possibility_name, $possibilities_html_part);
-			$possibilities_html_part = replace("PossibilityQuote", " (".$possibilities_quotes[$k].")", $possibilities_html_part);
+			$possibilities_html_part = replace("PossibilityQuote", $possibilities_quotes[$k], $possibilities_html_part);
+			$possibilities_html_part = replace("PossibilityQue", $possibilities_ques[$k], $possibilities_html_part);
+			$possibilities_html_part = replace("PossibilitySum", $possibilities_sums[$k], $possibilities_html_part);
 			$possibilities_html_part = replace("BetID", $active_bets[$i]->getBetId()."#", $possibilities_html_part);
 			$k++;
 		}

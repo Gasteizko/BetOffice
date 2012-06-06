@@ -1,6 +1,6 @@
 <?php
 /* DbMapper.class.php - BetSter project (22.05.06)
- * Copyright (C) 2006  Harald Kröll
+ * Copyright (C) 2006  Harald Krï¿½ll
  * 
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU General Public License as published by the Free 
@@ -57,7 +57,9 @@ class DbMapper {
 				$autor_id =  $rowarray["autor_id"],
 				$possibilities_names = $possibilities_names_array,
 				$possibilities_ids = $possibilities_ids_array,
-				$possibilities_quotes = 0); 
+				$possibilities_quotes = 0,
+				$possibilities_ques = 0,
+				$possibilities_sums = 0); 
 		return $return_bet;
 	}
 
@@ -87,6 +89,8 @@ class DbMapper {
 			$possibilities_ids_array = array();
 			$possibilities_names_array = array();
 			$possibilities_quotes_array = array();
+			$possibilities_ques_array = array();
+			$possibilities_sums_array = array();
 
 			for ($possibilities_counter = 0; $possibilities_counter < (mysql_num_rows($result2)) ; $possibilities_counter++) {
 				$possibilities_ids_array[$possibilities_counter] = mysql_result($result2, $possibilities_counter, "id");
@@ -95,6 +99,8 @@ class DbMapper {
 
 			// Read out and calculate the array with the quotes		
 			$i = 0;
+			// @cheva here are <!-- #PossibilityQuote --><!-- PossibilityQuote# --> ?
+			// YES
 			foreach ($possibilities_ids_array as $possibility_id) {
 				$query1 = "SELECT SUM(credits) FROM transactions WHERE possibilities_id = '$possibility_id'";
 				$query2 = "SELECT SUM(credits)
@@ -113,6 +119,8 @@ class DbMapper {
 					$dirty_quote = round($quote, 2);
 				}
 				$possibilities_quotes_array[$i] = $dirty_quote;
+				$possibilities_ques_array[$i] = $i;
+				$possibilities_sums_array[$i] = $i;
 				$i++;
 			}
 
@@ -135,7 +143,9 @@ class DbMapper {
 					mysql_result($result, $bet_counter, "autor_id"),
 					$possibilities_names_array,
 					$possibilities_ids_array,
-					$possibilities_quotes_array);		             
+					$possibilities_quotes_array,
+					$possibilities_ques_array,
+					$possibilities_sums_array);		             
 		}
 		return $return_bet_array;
 	}
@@ -161,6 +171,8 @@ class DbMapper {
 			$possibilities_ids_array = array();
 			$possibilities_names_array = array();
 			$possibilities_quotes_array = array();
+			$possibilities_ques_array = array();
+			$possibilities_sums_array = array();
 
 			for ($possibilities_counter = 0; $possibilities_counter < (mysql_num_rows($result2)) ; $possibilities_counter++) {
 				$possibilities_ids_array[$possibilities_counter] = mysql_result($result2, $possibilities_counter, "id");
@@ -187,6 +199,8 @@ class DbMapper {
 					$dirty_quote = round($quote, 2);
 				}
 				$possibilities_quotes_array[$i] = $dirty_quote;
+				$possibilities_ques_array[$i] = $i;
+				$possibilities_sums_array[$i] = $i;
 				$i++;
 			}
 
@@ -209,7 +223,9 @@ class DbMapper {
 					mysql_result($result, $bet_counter, "autor_id"),
 					$possibilities_names_array,
 					$possibilities_ids_array,
-					$possibilities_quotes_array);		             
+					$possibilities_quotes_array,
+					$possibilities_ques_array,
+					$possibilities_sums_array);		             
 		}
 		return $return_bet_array;
 	}
@@ -236,6 +252,8 @@ class DbMapper {
 			$possibilities_ids_array = array();
 			$possibilities_names_array = array();
 			$possibilities_quotes_array = array();
+			$possibilities_ques_array = array();
+			$possibilities_sums_array = array();
 
 			for ($possibilities_counter = 0; $possibilities_counter < (mysql_num_rows($result2)) ; $possibilities_counter++) {
 				$possibilities_ids_array[$possibilities_counter] = mysql_result($result2, $possibilities_counter, "id");
@@ -284,7 +302,9 @@ class DbMapper {
 					mysql_result($result, $bet_counter, "autor_id"),
 					$possibilities_names_array,
 					$possibilities_ids_array,
-					$possibilities_quotes_array);		             
+					$possibilities_quotes_array,
+					$possibilities_ques_array,
+					$possibilities_sums_array);		             
 		}
 		return $return_bet_array;
 	}
@@ -312,6 +332,8 @@ class DbMapper {
 			$possibilities_ids_array = array();
 			$possibilities_names_array = array();
 			$possibilities_quotes_array = array();
+			$possibilities_ques_array = array();
+			$possibilities_sums_array = array();
 
 			for ($possibilities_counter = 0; $possibilities_counter < (mysql_num_rows($result2)) ; $possibilities_counter++) {
 				$possibilities_ids_array[$possibilities_counter] = mysql_result($result2, $possibilities_counter, "id");
@@ -326,8 +348,8 @@ class DbMapper {
 					FROM transactions, possibilities
 					WHERE possibilities.bets_id = '$bet_id'
 					AND possibilities.id = transactions.possibilities_id";
-				$result1 = mysql_db_query (DBNAME,$query1) or die ("Ungültige Abfrage: ". mysql_error());
-				$result2 = mysql_db_query (DBNAME,$query2) or die ("Ungültige Abfrage: ". mysql_error());
+				$result1 = mysql_db_query (DBNAME,$query1) or die ("Ungï¿½ltige Abfrage: ". mysql_error());
+				$result2 = mysql_db_query (DBNAME,$query2) or die ("Ungï¿½ltige Abfrage: ". mysql_error());
 				$credits_of_possibility = mysql_result($result1, 0);
 				$credits_of_bet = mysql_result($result2, 0);
 				if ($credits_of_possibility == 0){
@@ -338,6 +360,8 @@ class DbMapper {
 					$dirty_quote = round($quote, 2);
 				}
 				$possibilities_quotes_array[$i] = $dirty_quote;
+				$possibilities_ques_array[$i] = $i;
+				$possibilities_sums_array[$i] = $i;
 				$i++;
 			}
 
@@ -360,7 +384,9 @@ class DbMapper {
 					mysql_result($result, $bet_counter, "autor_id"),
 					$possibilities_names_array,
 					$possibilities_ids_array,
-					$possibilities_quotes_array);		             
+					$possibilities_quotes_array,
+					$possibilities_ques_array,	
+					$possibilities_sums_array);		             
 		}
 		return $return_bet_array;
 	}
@@ -385,6 +411,8 @@ class DbMapper {
 			$possibilities_ids_array = array();
 			$possibilities_names_array = array();
 			$possibilities_quotes_array = array();
+			$possibilities_ques_array = array();
+			$possibilities_sums_array = array();
 
 			for ($possibilities_counter = 0; $possibilities_counter < (mysql_num_rows($result2)) ; $possibilities_counter++) {
 				$possibilities_ids_array[$possibilities_counter] = mysql_result($result2, $possibilities_counter, "id");
@@ -411,6 +439,8 @@ class DbMapper {
 					$dirty_quote = round($quote, 2);
 				}
 				$possibilities_quotes_array[$i] = $dirty_quote;
+				$possibilities_ques_array[$i] = $i;
+				$possibilities_sums_array[$i] = $i;
 				$i++;
 			}
 
@@ -433,7 +463,9 @@ class DbMapper {
 					mysql_result($result, $bet_counter, "autor_id"),
 					$possibilities_names_array,
 					$possibilities_ids_array,
-					$possibilities_quotes_array);		             
+					$possibilities_quotes_array,
+					$possibilities_ques_array,
+					$possibilities_sums_array);		             
 		}
 		return $return_bet_array;
 	}    
@@ -843,8 +875,8 @@ class DbMapper {
 			FROM transactions, possibilities
 			WHERE possibilities.bets_id = '$bet_id'
 			AND possibilities.id = transactions.possibilities_id";
-		$result1 = mysql_db_query (DBNAME,$query1) or die ("Ungültige Abfrage: ". mysql_error());
-		$result2 = mysql_db_query (DBNAME,$query2) or die ("Ungültige Abfrage: ". mysql_error());
+		$result1 = mysql_db_query (DBNAME,$query1) or die ("Ungï¿½ltige Abfrage: ". mysql_error());
+		$result2 = mysql_db_query (DBNAME,$query2) or die ("Ungï¿½ltige Abfrage: ". mysql_error());
 		$credits_of_possibility = mysql_result($result1, 0);
 		$credits_of_bet = mysql_result($result2, 0);	
 		$quote = $credits_of_bet / $credits_of_possibility;

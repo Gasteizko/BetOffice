@@ -1,6 +1,6 @@
 <?php
 /* Bet.class.php - BetSter project (22.05.06)
- * Copyright (C) 2006  Harald Kröll
+ * Copyright (C) 2006  Harald Krï¿½ll
  * 
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU General Public License as published by the Free 
@@ -32,10 +32,12 @@ class Bet {
 	var $possibilities_names = array();
 	var $possibilities_ids = array();
 	var $possibilities_quotes = array();
+	var $possibilities_ques = array();
+	var $possibilities_sums = array();
 
 	function Bet($id, $title, $subtitle, $category_id, $category_name, $image, $start_time, $end_time,
 			$created, $autor_id, 
-			$possibilities_names, $possibilities_ids, $possibilities_quotes){
+			$possibilities_names, $possibilities_ids, $possibilities_quotes, $possibilities_ques, $possibilities_sums){
 		$this->id = $id;
 		$this->title = $title;
 		$this->subtitle = $subtitle;
@@ -49,6 +51,8 @@ class Bet {
 		$this->possibilities_names = $possibilities_names;
 		$this->possibilities_ids = $possibilities_ids;
 		$this->possibilities_quotes = $possibilities_quotes;
+		$this->possibilities_ques = $possibilities_ques;
+		$this->possibilities_sums = $possibilities_sums;
 	}
 
 	// execute the bet ...
@@ -123,6 +127,14 @@ class Bet {
 		return $this->possibilities_quotes;
 	}
 
+	function getPossibilitiesQues(){
+		return $this->possibilities_ques;
+	}
+	
+	function getPossibilitiesSums(){
+		return $this->possibilities_sums;
+	}
+
 	// set methods
 
 	function setBetId($id){
@@ -171,6 +183,14 @@ class Bet {
 
 	function setPossibilitiesQuotes($quotes_array){
 		$this->possibilities_quotes = $quotes_array;
+	}
+
+	function setPossibilitiesQues($ques_array){
+		$this->possibilities_ques = $ques_array;
+	}
+
+	function setPossibilitiesSums($ques_array){
+		$this->possibilities_sums = $sums_array;
 	}
 }
 ?>
