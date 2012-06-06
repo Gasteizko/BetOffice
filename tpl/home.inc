@@ -15,7 +15,7 @@ alt ="Category Image" />
 <span class="bettitle"><!-- #Title --><!-- Title# --></span>
 <br><span class="pretime"><!-- #Until -->
 <!-- Until# --></span><!-- #End --><!-- End# --><br>
-<span class="subtitle"><!-- #SubTitle --><!-- SubTitle# --></span>
+<span class="subtitle" style="font-size:120%"><!-- #SubTitle --><!-- SubTitle# --></span>
 </p>
 
 <br />
@@ -23,7 +23,7 @@ alt ="Category Image" />
 <nobr style="clear:both">
 <input type="radio" name="pos" class="betoption"
 value="<!-- #BetID --><!-- BetID# --><!-- #PossibilityID --><!-- PossibilityID# -->" />
-<b><!-- #PossibilityName --><!-- PossibilityName# --></b>
+<div class="bettitle" style='float:left; width:48%; border-bottom: 1px dotted gray;'><!-- #PossibilityName --><!-- PossibilityName# --></div>
 <i>
 	(	<sup>+</sup><!-- #PossibilityQue --><!-- PossibilityQue# --> | 
 		<sup>k</sup><!-- #PossibilityQuote --><!-- PossibilityQuote# --> | 
@@ -31,13 +31,13 @@ value="<!-- #BetID --><!-- BetID# --><!-- #PossibilityID --><!-- PossibilityID# 
 	)
 </i>
 </nobr>
-&nbsp;<br />
+&nbsp;<br style='clear:both' /><br />
 <!-- Possibilities# -->
 
 
-<p>Credits: <input type="text" class="betfield" name="credits" size="5" />
+<p>Credits: <input type="text" class="betfield" style='width:20%;' name="credits" size="5" />
 <input
-type="submit" name="Betbutton" class="betbutton" value="Bet" /></p>
+type="submit" name="Betbutton" class="betbutton" style='width:20%;' value="Bet" /></p>
 </form>
 
 </div>

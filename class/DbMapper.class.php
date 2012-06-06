@@ -111,8 +111,13 @@ class DbMapper {
 					FROM transactions, possibilities
 					WHERE possibilities.bets_id = '$bet_id'
 					AND possibilities.id = transactions.possibilities_id";
+				$query3 = "SELECT COUNT(*)
+					FROM transactions, possibilities
+					WHERE  transactions.possibilities_id = '$possibility_id'
+					AND possibilities.id = transactions.possibilities_id";
 				$result1 = mysql_db_query (DBNAME,$query1)  or error_catcher();
 				$result2 = mysql_db_query (DBNAME,$query2)  or error_catcher();
+				$result3 = mysql_db_query (DBNAME,$query3)  or error_catcher();
 				$credits_of_possibility = mysql_result($result1, 0);
 				$credits_of_bet = mysql_result($result2, 0);
 				if ($credits_of_possibility == 0){
@@ -123,8 +128,8 @@ class DbMapper {
 					$dirty_quote = round($quote, 2);
 				}
 				$possibilities_quotes_array[$i] = $dirty_quote;
-				$possibilities_ques_array[$i] = $i;
-				$possibilities_sums_array[$i] = $i;
+				$possibilities_ques_array[$i] = mysql_result($result3, 0);
+				$possibilities_sums_array[$i] = $credits_of_possibility;
 				$i++;
 			}
 
@@ -191,8 +196,13 @@ class DbMapper {
 					FROM transactions, possibilities
 					WHERE possibilities.bets_id = '$bet_id'
 					AND possibilities.id = transactions.possibilities_id";
+				$query3 = "SELECT COUNT(*)
+					FROM transactions, possibilities
+					WHERE  transactions.possibilities_id = '$possibility_id'
+					AND possibilities.id = transactions.possibilities_id";
 				$result1 = mysql_db_query (DBNAME,$query1)  or error_catcher();
 				$result2 = mysql_db_query (DBNAME,$query2)  or error_catcher();
+				$result3 = mysql_db_query (DBNAME,$query3)  or error_catcher();
 				$credits_of_possibility = mysql_result($result1, 0);
 				$credits_of_bet = mysql_result($result2, 0);
 				if ($credits_of_possibility == 0){
@@ -203,8 +213,8 @@ class DbMapper {
 					$dirty_quote = round($quote, 2);
 				}
 				$possibilities_quotes_array[$i] = $dirty_quote;
-				$possibilities_ques_array[$i] = $i;
-				$possibilities_sums_array[$i] = $i;
+				$possibilities_ques_array[$i] = mysql_result($result3, 0);
+				$possibilities_sums_array[$i] = $credits_of_possibility;
 				$i++;
 			}
 
@@ -272,8 +282,13 @@ class DbMapper {
 					FROM transactions, possibilities
 					WHERE possibilities.bets_id = '$bet_id'
 					AND possibilities.id = transactions.possibilities_id";
+				$query3 = "SELECT COUNT(*)
+					FROM transactions, possibilities
+					WHERE  transactions.possibilities_id = '$possibility_id'
+					AND possibilities.id = transactions.possibilities_id";
 				$result1 = mysql_db_query (DBNAME,$query1)  or error_catcher();
 				$result2 = mysql_db_query (DBNAME,$query2)  or error_catcher();
+				$result3 = mysql_db_query (DBNAME,$query3)  or error_catcher();
 				$credits_of_possibility = mysql_result($result1, 0);
 				$credits_of_bet = mysql_result($result2, 0);
 				if ($credits_of_possibility == 0){
@@ -284,6 +299,8 @@ class DbMapper {
 					$dirty_quote = round($quote, 2);
 				}
 				$possibilities_quotes_array[$i] = $dirty_quote;
+				$possibilities_ques_array[$i] = mysql_result($result3, 0);
+				$possibilities_sums_array[$i] = $credits_of_possibility;
 				$i++;
 			}
 
@@ -352,8 +369,13 @@ class DbMapper {
 					FROM transactions, possibilities
 					WHERE possibilities.bets_id = '$bet_id'
 					AND possibilities.id = transactions.possibilities_id";
+				$query3 = "SELECT COUNT(*)
+					FROM transactions, possibilities
+					WHERE  transactions.possibilities_id = '$possibility_id'
+					AND possibilities.id = transactions.possibilities_id";
 				$result1 = mysql_db_query (DBNAME,$query1) or die ("Ung�ltige Abfrage: ". mysql_error());
 				$result2 = mysql_db_query (DBNAME,$query2) or die ("Ung�ltige Abfrage: ". mysql_error());
+				$result3 = mysql_db_query (DBNAME,$query3) or die ("Ung�ltige Abfrage: ". mysql_error());
 				$credits_of_possibility = mysql_result($result1, 0);
 				$credits_of_bet = mysql_result($result2, 0);
 				if ($credits_of_possibility == 0){
@@ -364,8 +386,8 @@ class DbMapper {
 					$dirty_quote = round($quote, 2);
 				}
 				$possibilities_quotes_array[$i] = $dirty_quote;
-				$possibilities_ques_array[$i] = $i;
-				$possibilities_sums_array[$i] = $i;
+				$possibilities_ques_array[$i] = mysql_result($result3, 0);
+				$possibilities_sums_array[$i] = $credits_of_possibility;
 				$i++;
 			}
 
@@ -431,8 +453,13 @@ class DbMapper {
 					FROM transactions, possibilities
 					WHERE possibilities.bets_id = '$bet_id'
 					AND possibilities.id = transactions.possibilities_id";
+				$query3 = "SELECT COUNT(*)
+					FROM transactions, possibilities
+					WHERE  transactions.possibilities_id = '$possibility_id'
+					AND possibilities.id = transactions.possibilities_id";
 				$result1 = mysql_db_query (DBNAME,$query1)  or error_catcher();
 				$result2 = mysql_db_query (DBNAME,$query2)  or error_catcher();
+				$result3 = mysql_db_query (DBNAME,$query3)  or error_catcher();
 				$credits_of_possibility = mysql_result($result1, 0);
 				$credits_of_bet = mysql_result($result2, 0);
 				if ($credits_of_possibility == 0){
@@ -443,8 +470,8 @@ class DbMapper {
 					$dirty_quote = round($quote, 2);
 				}
 				$possibilities_quotes_array[$i] = $dirty_quote;
-				$possibilities_ques_array[$i] = $i;
-				$possibilities_sums_array[$i] = $i;
+				$possibilities_ques_array[$i] = mysql_result($result3, 0);
+				$possibilities_sums_array[$i] = $credits_of_possibility;
 				$i++;
 			}
 
