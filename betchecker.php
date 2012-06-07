@@ -65,13 +65,13 @@ function checkValues($bstConfig_state){
 	}
 		
 	elseif (isset($_POST['pos']) && isset($_POST['credits'])){
-		if ((intval($credits) == floatval($credits))){
+		if ((intval($credits) > 0 && intval($credits) == floatval($credits))){
 			return 1;
 		}
 	}
 
 	elseif (isset($_GET['pos']) && isset($_GET['cd'])){
-		if ((intval($cd) == floatval($cd))){
+		if ((intval($cd) > 0 && (intval($cd) == floatval($cd))){
 			return 2;
 		}
 	}
