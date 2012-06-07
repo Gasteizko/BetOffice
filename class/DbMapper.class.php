@@ -1010,7 +1010,7 @@ class DbMapper {
 		$res = mysql_fetch_assoc(mysql_db_query(DBNAME, "SELECT SUM(`credits`) as wSum FROM transactions WHERE `possibilities_id` = '$id'"));
 		$wSum = (int)$res['wSum'];
 
-		$res = mysql_db_query(DBNAME, "SELECT `user_id`, `credits` FROM `transactions` WHERE `possibilities_id` = '$id'");
+		$res = mysql_db_query(DBNAME, "SELECT `user_id`, `credits`, `possibilities_id` FROM `transactions` WHERE `possibilities_id` = '$id'");
 		while($row = mysql_fetch_assoc($res)) $winners[]=$row;
 		
 		$res  = mysql_fetch_assoc(mysql_db_query(DBNAME, "SELECT `bets_id` FROM `possibilities` WHERE id = '$id'"));
@@ -1022,10 +1022,13 @@ class DbMapper {
 							SELECT `id` FROM possibilities WHERE `bets_id` = '{$betsId}'
 						    )"));
 		$tSum = (int)$res['tSum'];
+		$quote= round($tSum/$wSum,2);
 		
 		foreach($winners as $winner){
 		    $newBalance = $winner['credits'] + round($tSum/$wSum*$winner['credits'], 0);
 		    mysql_db_query(DBNAME, "UPDATE user SET `balance` = '$newBalance' WHERE `id` = '{$winner['user_id']}'");
+		    mysql_db_query(DBNAME, "INSERT INTO `userwins` (`possibilities_id`, `user_id`, `won_credits`, `quote`)
+					    VALUES ('{$winner['possibilities_id']}', '{$winner['user_id']}', '".($newBalance - $winner['credits'])."', '$quote'");
 		    // echo "UPDATE user SET `balance` = '$newBalance' WHERE `id` = '{$winner['user_id']}'<br>";
 		}
 		// die;
