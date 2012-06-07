@@ -30,7 +30,7 @@ require_once("class/Site.class.php");
 require_once("class/Session.class.php");
 require_once("class/phpmailer.class.php");
 
-
+// if(count($_POST)) die(var_dump($_POST));
 // objects
 $session = new Session;
 $logger = new Logger;

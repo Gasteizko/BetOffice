@@ -28,6 +28,7 @@ class DbMapper {
 			die("Database error, contact your admin");
 		if (!mysql_select_db (DBNAME, $connect))
 			error_catcher();
+		$result = mysql_query("SET NAMES 'utf8'");
 	}
 
 	// returns a Bet from a certain id
@@ -1003,9 +1004,33 @@ class DbMapper {
 
 	function setWonPossibility($id){
 
+		// @cheva here update user.balance
+		// {
+	
+		$res = mysql_fetch_assoc(mysql_db_query(DBNAME, "SELECT SUM(`credits`) as wSum FROM transactions WHERE `possibilities_id` = '$id'"));
+		$wSum = (int)$res['wSum'];
+
+		$res = mysql_db_query(DBNAME, "SELECT `user_id`, `credits` FROM `transactions` WHERE `possibilities_id` = '$id'");
+		while($row = mysql_fetch_assoc($res)) $winners[]=$row;
+		
+		$res  = mysql_fetch_assoc(mysql_db_query(DBNAME, "SELECT `bets_id` FROM `possibilities` WHERE id = '$id'"));
+		$betsId = $res['bets_id'];
+
+		$res = mysql_fetch_assoc(mysql_db_query(DBNAME, "SELECT SUM(`credits`) as tSum 
+						    FROM `transactions` 
+						    WHERE possibilities_id IN(
+							SELECT `id` FROM possibilities WHERE `bets_id` = '{$betsId}'
+						    )"));
+		$tSum = (int)$res['tSum'];
+		
+		foreach($winners as $winner){
+		    $newBalance = $winner['credits'] + round($tSum/$wSum*$winner['credits'], 0);
+		    mysql_db_query(DBNAME, "UPDATE user SET `balance` = '$newBalance' WHERE `id` = '{$winner['user_id']}'");
+		    // echo "UPDATE user SET `balance` = '$newBalance' WHERE `id` = '{$winner['user_id']}'<br>";
+		}
+		// die;
 		$query = "UPDATE possibilities SET win = 'yes' WHERE id = '$id'";
 		$result = mysql_db_query(DBNAME, $query)  or error_catcher();
-
 		return $result;
 	}
 

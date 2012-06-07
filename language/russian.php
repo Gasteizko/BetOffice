@@ -1,6 +1,6 @@
 <?
 /* english.php - English language defines of the BetSter project (22.05.06)
- * Copyright (C) 2006  Harald Kr�ll
+ * Copyright (C) 2006  Harald Krцll
  * 
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU General Public License as published by the Free 
@@ -190,7 +190,7 @@ DEFINE('_PASSWORD_REPEAT', 'repeat password');
 DEFINE('_FIELDS_INC', 'Please fill in the following fields. (Username max. 8 chars, Password min 5 chars)');
 DEFINE('_PWD_DIF', 'Please insert the same password twice');
 DEFINE('_PWD_SHORT', 'Please insert a password with min 5 characters');
-DEFINE('_INSERTED', 'Your registration was successful. You got an email, which contains the link to activate your account.<br />Если Вы не увидели письмо во "Входящих", проверьте ящик "Спам"');
+DEFINE('_INSERTED', 'Your registration was successful. You got an email, which contains the link to activate your account.');
 DEFINE('_UN_EXISTS', 'Please choose another username, this is allready occupied');
 DEFINE('_UN_INVALID', 'Please chosse another username, this is invalid.');
 DEFINE('_INPUTS_CORRECT', 'Your Profile was successfully edited');

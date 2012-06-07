@@ -37,7 +37,7 @@ class Bet {
 
 	function Bet($id, $title, $subtitle, $category_id, $category_name, $image, $start_time, $end_time,
 			$created, $autor_id, 
-			$possibilities_names, $possibilities_ids, $possibilities_quotes, $possibilities_ques, $possibilities_sums){
+			$possibilities_names, $possibilities_ids, $possibilities_quotes, $possibilities_ques = 0, $possibilities_sums = 2){
 		$this->id = $id;
 		$this->title = $title;
 		$this->subtitle = $subtitle;

@@ -53,7 +53,7 @@ require_once ('modules/catmenu.php');
 require_once ('modules/title.php');
 
 // 5. mainhtml
-
+// die(var_dump($_POST));
 
 if (($session->getState()) && 
 	(($user->getStatus() == "administrator") || 
@@ -74,8 +74,8 @@ if (($session->getState()) &&
 		$mainhtml = replace("MainTitle", _FREEZE_BET, $mainhtml);
 		$mainhtml = replace("Message1", _FREEZE_BET_SUC, $mainhtml);
 		$mainhtml = replace("Back", _BET_BACK, $mainhtml);
-
 		$bet = $db_mapper->getBet($bet_id);
+//die(var_dump($bet));
 		$bet->freeze($pos_id);
 		$logger->writeLog($user->getUsername(), _FREEZE_BET_ID.$bet->getBetId());
 

@@ -2,12 +2,8 @@
 <h1><!-- #MainTitle --><!-- MainTitle# --></h1>
 
 <!-- #Bets -->
-<div id="betlayer"
-class="<!-- #CategoryCSS --><!-- CategoryCSS# -->">
-<img
-class="cat-image"
-src="<!-- #ImageSrc --><!-- ImageSrc# -->" 
-alt ="Category Image" /> 
+<div id="betlayer" class="<!-- #CategoryCSS --><!-- CategoryCSS# -->">
+<img class="cat-image" src="<!-- #ImageSrc --><!-- ImageSrc# -->" alt ="Category Image" /> 
 <form name="betform" action="betchecker.php" method="post">
 
 <p>
@@ -17,8 +13,7 @@ alt ="Category Image" />
 <!-- Until# --></span><!-- #End --><!-- End# --><br>
 <span class="subtitle" style="font-size:120%"><!-- #SubTitle --><!-- SubTitle# --></span>
 </p>
-
-<br />
+</div><div id="betlayer" style='clear:both'">
 <!-- #Possibilities -->
 <nobr style="clear:both">
 <input type="radio" name="pos" class="betoption"
@@ -31,7 +26,7 @@ value="<!-- #BetID --><!-- BetID# --><!-- #PossibilityID --><!-- PossibilityID# 
 	)
 </i>
 </nobr>
-&nbsp;<br style='clear:both' /><br />
+<br style='clear:both' /><br>
 <!-- Possibilities# -->
 
 

@@ -60,18 +60,18 @@ $mainhtml = file_get_contents("tpl/betchecker.inc");
 function checkValues($bstConfig_state){
 // die(var_dump($_GET));
 // return 4;
+// die(intval($credits));
 	if ($bstConfig_state == "closed"){
 		return 3;
 	}
-		
 	elseif (isset($_POST['pos']) && isset($_POST['credits'])){
-		if ((intval($credits) > 0 && intval($credits) == floatval($credits))){
+		if ((intval($_POST['credits']) > 0 && intval($_POST['credits']) == floatval($_POST['credits']))){
 			return 1;
 		}
 	}
 
 	elseif (isset($_GET['pos']) && isset($_GET['cd'])){
-		if ((intval($cd) > 0 && (intval($cd) == floatval($cd))){
+		if (intval($_GET['cd']) > 0 && (intval($_GET['cd']) == floatval($_GET['cd']))){
 			return 2;
 		}
 	}

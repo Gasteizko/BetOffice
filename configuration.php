@@ -12,7 +12,7 @@ $bstConfig_sub_title = "Что проиграем, то не пропьём!<br>
 $bstConfig_url = "http://bet.cheva.kiev.ua/";
 
 // start credits for your users
-$bstConfig_initial_credits = 20000;
+$bstConfig_initial_credits = 20;
 
 // open or close?
 $bstConfig_state = "open";
@@ -66,13 +66,13 @@ define ("SMTP_USER","");
 define ("SMTP_PASSWORD","");
 
 // sender name displayed in the emails sent from the bet-office
-define ("SENDER", "Betster");
+define ("SENDER", "Bet Office");
 
 // email adress of your bet office
 define ("CONTACT_MAIL", "cheva@cheva.kiev.ua");
 
 // email signature of your bet office
-define ("SIGNATURE", "\n-- \n$bstConfig_main_title - a free bet Office");
+define ("SIGNATURE", "\n-- \n$bstConfig_main_title - a free Bet Office");
 
 // Max. image-file size in bytes
 define ("MAX_IMAGE_FILESIZE", 1000000);
