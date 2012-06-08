@@ -710,11 +710,10 @@ class DbMapper {
 	// query doesn't work
 	function getWinningUsers($possibility_id){
 		$query = "SELECT DISTINCT user.*
-			FROM user, transactions, possibilities, userwins
+			FROM user, transactions, possibilities
 			WHERE user.id = transactions.user_id
 			AND transactions.possibilities_id = possibilities.id
 			AND possibilities.id = '".$possibility_id."'
-			AND userwins.possibilities_id <> possibilities.id
 			AND possibilities.win = 'yes'";
 		$result = mysql_query ($query) or error_catcher();
 		$user_array = array();
@@ -733,7 +732,7 @@ class DbMapper {
 
 	function getLoosingUsers($bet_id){
 		$query = "SELECT DISTINCT user.*
-			FROM user, transactions, possibilities, userwins
+			FROM user, transactions, possibilities
 			WHERE user.id = transactions.user_id
 			AND transactions.possibilities_id = possibilities.id
 			AND possibilities.bets_id = '$bet_id'";
@@ -1003,35 +1002,6 @@ class DbMapper {
 	}
 
 	function setWonPossibility($id){
-
-		// @cheva here update user.balance
-		// {
-	
-		$res = mysql_fetch_assoc(mysql_db_query(DBNAME, "SELECT SUM(`credits`) as wSum FROM transactions WHERE `possibilities_id` = '$id'"));
-		$wSum = (int)$res['wSum'];
-
-		$res = mysql_db_query(DBNAME, "SELECT `user_id`, `credits`, `possibilities_id` FROM `transactions` WHERE `possibilities_id` = '$id'");
-		while($row = mysql_fetch_assoc($res)) $winners[]=$row;
-		
-		$res  = mysql_fetch_assoc(mysql_db_query(DBNAME, "SELECT `bets_id` FROM `possibilities` WHERE id = '$id'"));
-		$betsId = $res['bets_id'];
-
-		$res = mysql_fetch_assoc(mysql_db_query(DBNAME, "SELECT SUM(`credits`) as tSum 
-						    FROM `transactions` 
-						    WHERE possibilities_id IN(
-							SELECT `id` FROM possibilities WHERE `bets_id` = '{$betsId}'
-						    )"));
-		$tSum = (int)$res['tSum'];
-		$quote= round($tSum/$wSum,2);
-		
-		foreach($winners as $winner){
-		    $newBalance = $winner['credits'] + round($tSum/$wSum*$winner['credits'], 0);
-		    mysql_db_query(DBNAME, "UPDATE user SET `balance` = '$newBalance' WHERE `id` = '{$winner['user_id']}'");
-		    mysql_db_query(DBNAME, "INSERT INTO `userwins` (`possibilities_id`, `user_id`, `won_credits`, `quote`)
-					    VALUES ('{$winner['possibilities_id']}', '{$winner['user_id']}', '".($newBalance - $winner['credits'])."', '$quote'");
-		    // echo "UPDATE user SET `balance` = '$newBalance' WHERE `id` = '{$winner['user_id']}'<br>";
-		}
-		// die;
 		$query = "UPDATE possibilities SET win = 'yes' WHERE id = '$id'";
 		$result = mysql_db_query(DBNAME, $query)  or error_catcher();
 		return $result;

@@ -1,6 +1,6 @@
 <?php
 /* freezer.php - BetSter project (22.05.06)
- * Copyright (C) 2006  Harald Kröll
+ * Copyright (C) 2006  Harald Krï¿½ll
  * 
  * This program is free software; you can redistribute it and/or modify it 
  * under the terms of the GNU General Public License as published by the Free 
@@ -75,10 +75,8 @@ if (($session->getState()) &&
 		$mainhtml = replace("Message1", _FREEZE_BET_SUC, $mainhtml);
 		$mainhtml = replace("Back", _BET_BACK, $mainhtml);
 		$bet = $db_mapper->getBet($bet_id);
-//die(var_dump($bet));
 		$bet->freeze($pos_id);
 		$logger->writeLog($user->getUsername(), _FREEZE_BET_ID.$bet->getBetId());
-
 		// TODO: send emails
 		$winners = $db_mapper->getWinningUsers($pos_id);
 		$loosers = $db_mapper->getLoosingUsers($bet_id);
@@ -91,26 +89,25 @@ if (($session->getState()) &&
 
 			$won_credits = $db_mapper->getWonCredits($winner->getUserId(), $pos_id);
 			$query = "UPDATE user SET balance = (balance + '$won_credits') WHERE id = '$user_id'";
-			mysql_db_query(DBNAME, $query) or die("Ungültige Abfrage: ".mysql_error());
+			mysql_db_query(DBNAME, $query) or die("Ungï¿½ltige Abfrage: ".mysql_error());
 
 			$query = "INSERT INTO userwins (possibilities_id, user_id, won_credits, quote)
 				VALUES ('".$pos_id."', '".$user_id."', '".$won_credits."', '".$quote."');";
-			mysql_db_query(DBNAME, $query) or die("Ungültige Abfrage: ".mysql_error());
-			$winners_email .= $winner->getEmail().", ";
-		}
+			mysql_db_query(DBNAME, $query) or die("Ungï¿½ltige Abfrage: ".mysql_error());
 
-		foreach($loosers as $looser){
-			$loosers_email .= $looser->getEmail().", ";
+			$pos_name = $db_mapper->getPossibilityNameFromId($pos_id);
+			Mailer(_WIN_SUB, _WIN_MSG."\n"."\n"
+					._BET.": ".$bet->getBetTitle()."\n"
+					._POSSIBILITY.": ".$pos_name."\n"
+					._QUOTE.": ".$quote."\n", $winner->getEmail());
 		}
-		$pos_name = $db_mapper->getPossibilityNameFromId($pos_id);
-		Mailer(_WIN_SUB, _WIN_MSG."\n"."\n"
-				._BET.": ".$bet->getBetTitle()."\n"
-				._POSSIBILITY.": ".$pos_name."\n"
-				._QUOTE.": ".$quote."\n", $winners_email);
-		Mailer(_LOOSE_SUB, _LOOSE_MSG."\n"."\n"
-				._BET.": ".$bet->getBetTitle()."\n"
-				._POSSIBILITY.": ".$pos_name."\n"
-				, $loosers_email);
+			
+		foreach($loosers as $looser){
+			Mailer(_LOOSE_SUB, _LOOSE_MSG."\n"."\n"
+					._BET.": ".$bet->getBetTitle()."\n"
+					._POSSIBILITY.": ".$pos_name."\n"
+					, $looser->getEmail());
+		}
 	}
 
 	elseif ($_POST['cancel'] == _CANCEL){

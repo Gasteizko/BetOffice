@@ -147,18 +147,6 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`, `firstname`, `lastname`, `balance`, `status`, `conf_num`) VALUES
 (1, 'admin', 'd9d1b168eac8f197e0576b56cfc23ece', 'cheva@ipnet.kiev.ua', 'Foo', 'Bar', 20, 'administrator', '34791'),
-(8, 'dcheva', 'd9d1b168eac8f197e0576b56cfc23ece', 'dmitriy.cheva@gmail.com', 'Dmitry', 'Cheva', 20, 'active', '87456'),
-(7, 'dcheva1', 'd9d1b168eac8f197e0576b56cfc23ece', 'dmitry.cheva@gmail.com', 'Dmitry', 'Cheva', 20, 'active', '52751'),
-(9, 'dcheva2', 'd9d1b168eac8f197e0576b56cfc23ece', 'cheva@ua.fm', 'Dmitry', 'Cheva', 20, 'active', '65438'),
-(10, 'dcheva3', 'd9d1b168eac8f197e0576b56cfc23ece', 'cheva@rambler.ru', 'Dmitry', 'Cheva', 20, 'active', '43526'),
-(11, 'dcheva4', 'd9d1b168eac8f197e0576b56cfc23ece', 'root@cheva.kiev.ua', 'Dmitry', 'Cheva', 20, 'active', '55626'),
-(12, 'dcheva5', 'd9d1b168eac8f197e0576b56cfc23ece', 'cheva@cheva.kiev.ua', 'Dmitry', 'Cheva', 20, 'active', '19683'),
-(17, 'dcheva6', 'd9d1b168eac8f197e0576b56cfc23ece', 'dcheva@cheva.kiev.ua', 'Dmitry', 'Cheva', 20, 'active', '19683'),
-(14, 'denys', '4a09b174f31c8cd4b2c99d51883ceb79', 'denysenko@inbox.ru', 'Olesia', 'Denysenko', 20, 'active', '42627'),
-(15, 'Koss', '96e79218965eb72c92a549dd5a330112', 'karakurtkoss@gmail.com', '<script>alert(''test'')</script>', 'Shtukert', 20, 'active', '90103'),
-(16, 'Lina', '8aa65920b23640418f971ba248ed024c', 'lin_za@ua.fm', 'Lina', 'Zagurskaya', 20, 'active', '81210'),
-(18, 'dcheva7', 'd9d1b168eac8f197e0576b56cfc23ece', 'dmitry.cheva@cheva.kiev.ua', 'Dmitry', 'Cheva', 20, 'active', '19683'),
-(19, 'dcheva8', 'd9d1b168eac8f197e0576b56cfc23ece', 'dmitriy.cheva@cheva.kiev.ua', 'Dmitry', 'Cheva', 20, 'active', '19683');
 
 -- --------------------------------------------------------
 

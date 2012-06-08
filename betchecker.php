@@ -81,7 +81,7 @@ function checkValues($bstConfig_state){
 }
 
 function checkBalance($user, $credits) {
-	if (($user->getBalance() > 0) && ($user->getBalance() > $credits))
+	if (($user->getBalance() > 0) && ($user->getBalance() >= $credits))
 		return true;
 }
 
@@ -111,13 +111,16 @@ if(checkUserStatus($session, $user)){
 //  echo(date('Y-m-d H:i:s ',time())); die($bet->getBetEndTime());
 
 	if (($cont_flag > 0) && ($bet->getBetEndTime() > date('Y-m-d H:i:s ',time()))){
+		// @cheva $credits is empty?
+		$credits = (int)$_POST['credits'];
+		if(!$credits) $credits = (int)$_GET['cd'];
+		
 		if(checkBalance($user, $credits)){
 			if(checkPossibility($db_mapper, $user, $pos)){
 				// success 
 				if ($cont_flag == 1){
 					// ask confirmation
 					$pos = htmlspecialchars($_POST['pos']);
-					$credits = htmlspecialchars($_POST['credits']);
 					$session->unlockF5();
 					$id_array = explode("#",$pos);
 					$bet_id = $id_array[0];
@@ -148,7 +151,6 @@ if(checkUserStatus($session, $user)){
 				else if ($cont_flag == 2){
 					// show confirmation
 					$pos = htmlspecialchars($_GET['pos']);
-					$credits = htmlspecialchars($_GET['cd']);
 					$id_array = explode("#",$pos);
 					$bet_id = $id_array[0];
 					$pos_id = $id_array[1];
