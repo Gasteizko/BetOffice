@@ -1,18 +1,20 @@
 <?php
+$version = " v1.10b";
+
 // Name of your bet office
-$bstConfig_name = "Bet office";
+$bstConfig_name = "Bet Office".$version;
 
 // The title (bold) of your bet office
-$bstConfig_main_title = "Bet office";
+$bstConfig_main_title = "Bet Office".$version;
 
 // subtitle
-$bstConfig_sub_title = "Что проиграем, то не пропьём!<br> Проект в работе. Прошу Вас регистрироваться на <a href='http://cheva.kiev.ua:88/account/register'>трекере</a> <br>и замечать все замечания <a href='http://cheva.kiev.ua:88/projects/bet/issues/new'>здесь</a>. (<a href='http://cheva.kiev.ua:88/projects/bet/issues?set_filter=1'>Список здесь</a>)";
+$bstConfig_sub_title = "Что проиграем, то не пропьём!<br> Проект в работе. Прошу Вас регистрироваться на <a href='http://cheva.kiev.ua:88/account/register'>трекере</a> <br>и замечать все замечания <a href='http://cheva.kiev.ua:88/projects/bet/issues/new'>здесь</a>. (<a href='http://cheva.kiev.ua:88/projects/bet/issues?set_filter=1'>Список здесь</a>)<br />( + количество ставок | k коэфициент выигрыша | $ сумма ставок )";
 
 // url
 $bstConfig_url = "http://bet.cheva.kiev.ua/";
 
 // start credits for your users
-$bstConfig_initial_credits = 20;
+$bstConfig_initial_credits = 100;
 
 // open or close?
 $bstConfig_state = "open";
@@ -66,7 +68,7 @@ define ("SMTP_USER","");
 define ("SMTP_PASSWORD","");
 
 // sender name displayed in the emails sent from the bet-office
-define ("SENDER", "Bet Office");
+define ("SENDER", "Bet Office".$version);
 
 // email adress of your bet office
 define ("CONTACT_MAIL", "cheva@cheva.kiev.ua");

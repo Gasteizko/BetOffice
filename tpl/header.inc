@@ -3,15 +3,15 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta name="generator" content="HTML Tidy, see www.w3.org" />
-<title>BetSter - The OpenSource betoffice</title>
+<title>Bet Office</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="dc.title"       content="" />
 <meta name="author"         content="" />
 <meta name="dc.creator"     content="" />
 <meta name="dc.subject"     content="" />
-<meta name="keywords"       content="Betoffice, Gambling, Betting" />
-<meta name="dc.description" content="Betster is an open-source betoffice for online betting" />
-<meta name="description"    content="BetSter - The OpenSource betoffice" />
+<meta name="keywords"       content="Bet Office, Gambling, Betting" />
+<meta name="dc.description" content="Bet Office is an open-source betoffice for online betting" />
+<meta name="description"    content="Bet Office - The OpenSource betoffice" />
 <meta name="dc.type"        content="betoffice" />
 <meta name="resource-type"  content="document" />
 <meta name="dc.format"      scheme="IMT" content="text/html" />

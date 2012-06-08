@@ -19,7 +19,7 @@
 <input type="radio" name="pos" class="betoption"
 value="<!-- #BetID --><!-- BetID# --><!-- #PossibilityID --><!-- PossibilityID# -->" />
 <div class="bettitle" style='float:left; width:48%; border-bottom: 1px dotted gray;'><!-- #PossibilityName --><!-- PossibilityName# --></div>
-<i>
+<i style='font-size:150%'>
 	(	<sup>+</sup><!-- #PossibilityQue --><!-- PossibilityQue# --> | 
 		<sup>k</sup><!-- #PossibilityQuote --><!-- PossibilityQuote# --> | 
 		<sup>$</sup><!-- #PossibilitySum --><!-- PossibilitySum# --> 

@@ -3,9 +3,9 @@ body
 /* background-color: #FBE653; #333366; #336633*/
 /* background-color: #FFFFFF; */
 /**/
-background: #bbb url(bg1.jpg) no-repeat;
+background: #bbb url(bg2.jpg) no-repeat;
 background-position: top center;
--webkit-background-size: cover;
+/*-webkit-background-size: cover;
 /**/
 }
 
